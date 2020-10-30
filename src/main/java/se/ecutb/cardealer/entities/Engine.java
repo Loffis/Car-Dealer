@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 import static se.ecutb.cardealer.constants.Messages.EMPTY_FIELD_MSG;
 
-//Vad för egenskaper har en motor??
+// Validering av alla ints ska göras.
 
 @Data
 @Builder

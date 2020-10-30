@@ -5,11 +5,11 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 import static se.ecutb.cardealer.constants.Messages.EMPTY_FIELD_MSG;
-
-//Vad för egenskaper har en motor??
+import static se.ecutb.cardealer.constants.Messages.WRONG_SIZE_MSG;
 
 @Data
 @Builder
@@ -20,14 +20,19 @@ public class Engine implements Serializable {
     @Id
     private String id;
     @NotEmpty(message = EMPTY_FIELD_MSG)
-    private int effect;         // typ 10-2000 hp alt. 7.5-1491 kW
+    @Size(min = 10, max = 2000, message = WRONG_SIZE_MSG)
+    private int effect;         // kw
     @NotEmpty(message = EMPTY_FIELD_MSG)
-    private int cylinders;      // 1-24
+    @Size(min = 1, max = 24, message = WRONG_SIZE_MSG)
+    private int cylinders;
     @NotEmpty(message = EMPTY_FIELD_MSG)
-    private int displacement;   // motorvolym 49-12000 cm3
+    @Size(min = 49, max = 12000, message = WRONG_SIZE_MSG)
+    private int displacement;   // cm3
     @NotEmpty(message = EMPTY_FIELD_MSG)
-    private int torque;         // vridmoment, har inga data just nu
+    @Size(min = 10, max = 2000, message = WRONG_SIZE_MSG)
+    private int torque;         // Nm
     @NotEmpty(message = EMPTY_FIELD_MSG)
-    private String fuel;        // Ska vi sätta bränslet till Engine eller till Car?
+    @Size(min = 3, max = 30, message = WRONG_SIZE_MSG)
+    private String fuel;
 
 }

@@ -15,6 +15,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//Backup-plan: En sökmetod istället för flera
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -93,6 +95,13 @@ public class CarService {
         //Jaa... uhm. Måste fundera på den!
         //Man kan ju byta däck på en bil. Ja motor också, men ganska otroligt.
         //Tillbehör! De kan ändras.
+
+        if(!carRepository.existsById(id)){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    String.format("Could not find car %s by id", id));
+        }
+        car.setId(id);
+        carRepository.save(car);
     }
 
     @CacheEvict(value = "carCache", key = "#id")

@@ -51,7 +51,7 @@ public class CarService {
     public List<Car> findByStatus() {
         var cars = carRepository.findAll();
         cars = cars.stream()
-                .filter(car -> car.getStatus() == "available")
+                .filter(car -> car.getStatus().equals("available")) // ändrade "==" till equals. Borde nog kunna funka!
                 .collect(Collectors.toList());
         return cars;
     }
@@ -90,6 +90,9 @@ public class CarService {
     @CachePut(value = "carCache", key = "#id")
     public void update(String id, Car car) {
         //Ska status enbart updateras eller mer?
+        //Jaa... uhm. Måste fundera på den!
+        //Man kan ju byta däck på en bil. Ja motor också, men ganska otroligt.
+        //Tillbehör! De kan ändras.
     }
 
     @CacheEvict(value = "carCache", key = "#id")

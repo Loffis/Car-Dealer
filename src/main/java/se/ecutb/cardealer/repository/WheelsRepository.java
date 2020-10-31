@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface WheelsRepository extends MongoRepository<Wheels, String>{
 
 
-    Optional<Wheels> findBySpeedRating(char rating);
+    Optional<Wheels> findByTireSpeedRating(char rating);
 }

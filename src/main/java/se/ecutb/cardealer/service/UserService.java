@@ -45,8 +45,8 @@ public class UserService {
                         String.format("Could not find the user by id %s.", id)));
     }
 
-    public User findByUserName(String username){
-        return userRepository.findByUserName(username)
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         String.format("Could not find the user by username %s", username)));
     }

@@ -84,8 +84,8 @@ public class WheelsService {
         return wheelsList;
    }
    @Cacheable(value = "wheelCache")
-    public Wheels findBySpeedRating(char rating) {
-        return wheelsRepository.findBySpeedRating(rating)
+    public Wheels findByTireSpeedRating(char rating) {
+        return wheelsRepository.findByTireSpeedRating(rating)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         String.format("can't find wheel %s by rating", rating)));
    }

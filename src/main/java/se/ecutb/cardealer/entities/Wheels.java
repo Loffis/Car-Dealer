@@ -33,21 +33,19 @@ public class Wheels implements Serializable {
     @Size(min = 13, max = 24, message = WRONG_SIZE_MSG)
     private int rimSizeRear;
     @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = TIRE_WIDTH_PATTERN,
-            message = "Valid sizes are 135-355 mm, with steps of 10 mm.")
+    @Pattern(regexp = TIRE_WIDTH_PATTERN, message = WRONG_TIRE_WIDTH_MSG)
     private int tireWidthFront;
     @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = TIRE_WIDTH_PATTERN,
-            message = "Valid sizes are 135-355 mm, with steps of 10 mm.")
+    @Pattern(regexp = TIRE_WIDTH_PATTERN, message = WRONG_TIRE_WIDTH_MSG)
     private int tireWidthRear;
     @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = TIRE_PROFILE_PATTERN, message = "Valid sizes are 30-80 with steps of 5.")
+    @Pattern(regexp = TIRE_PROFILE_PATTERN, message = WRONG_TIRE_PROFILE_MSG)
     private int tireProfileFront;
     @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = TIRE_PROFILE_PATTERN, message = "Valid sizes are 30-80 with steps of 5.")
+    @Pattern(regexp = TIRE_PROFILE_PATTERN, message = WRONG_TIRE_PROFILE_MSG)
     private int tireProfileRear;
     @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = TIRE_SPEED_RATING_PATTERN, message = "Valid ratings are B to Y.")
+    @Pattern(regexp = TIRE_SPEED_RATING_PATTERN, message = WRONG_TIRE_SPEED_RATING_MSG)
     private char tireSpeedRating;
 
 }

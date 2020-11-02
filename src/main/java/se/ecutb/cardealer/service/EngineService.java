@@ -28,6 +28,13 @@ public class EngineService {
         return engines;
     }
 
+    @Cacheable(value = "engineCache", key ="#id")
+    public Engine findById(String id) {
+        return engineRepository.findById(id).
+                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        String.format("Can't find the engine %s by id", id)));
+    }
+
     @Cacheable(value = "engineCache")
     public Engine findByEffect(int effect) {
         return engineRepository.findByEffect(effect)
@@ -62,6 +69,11 @@ public class EngineService {
                 .filter(engine -> engine.getFuel().toLowerCase() == fuel.toLowerCase())
                 .collect(Collectors.toList());
         return engines;
+    }
+
+    @CachePut(value = "engineCache", key= "#result.id")
+    public void save(Engine engine){
+        return engineRepository.save(engine);
     }
 
     @CachePut(value = "engineCache", key = "#id")

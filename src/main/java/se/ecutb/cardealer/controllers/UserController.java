@@ -1,8 +1,11 @@
 package se.ecutb.cardealer.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import se.ecutb.cardealer.entities.User;
 import se.ecutb.cardealer.service.UserService;
 
@@ -17,7 +20,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAllUser(@RequestParam(required = false) Sting name, boolean sort){
+    public ResponseEntity<List<User>> findAllUser(@RequestParam(required = false) String name, boolean sort){
         return ResponseEntity.ok(userService.findAll(name, sort));
     }
 
@@ -32,7 +35,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    @ReponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateUser (@PathVariable String id, @Validated @RequestBody User user){
         userService.update(id, user);
     }

@@ -73,7 +73,7 @@ public class EngineService {
 
     @CachePut(value = "engineCache", key= "#result.id")
     public void save(Engine engine){
-        return engineRepository.save(engine);
+        engineRepository.save(engine);
     }
 
     @CachePut(value = "engineCache", key = "#id")

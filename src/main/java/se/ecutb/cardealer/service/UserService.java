@@ -6,7 +6,6 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import se.ecutb.cardealer.entities.User;
@@ -59,13 +58,13 @@ public class UserService {
     //Kanske behövs ändra en del för att kunna anpassa vad vi behöver
     @CachePut(value = "userCache", key = "#id")
     public void update(String id, User user) {
-        var isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
+        /*var isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
                 .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().toUpperCase().equals("ROLES_ADMIN"));
         var isCurrentUser = SecurityContextHolder.getContext().getAuthentication()
                 .getName().toLowerCase().equals(user.getUsername().toLowerCase());
         if(!isAdmin && !isCurrentUser){
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Update only your own details, you're not admin");
-        }
+        }*/
         if(!userRepository.existsById(id)) {
             log.error(String.format("Could not find the user by id %s.", id));
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, // 404 -> Not found

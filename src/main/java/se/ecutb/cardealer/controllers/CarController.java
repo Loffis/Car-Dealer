@@ -29,8 +29,8 @@ public class CarController {
     }
 
     @GetMapping("/status={status}")
-    public ResponseEntity<List<Car>> findCarsByStatus(){
-        return ResponseEntity.ok(carService.findByStatus());
+    public ResponseEntity<List<Car>> findCarsByStatus(@PathVariable String status){
+        return ResponseEntity.ok(carService.findByStatus(status));
     }
 
     @GetMapping("/brand={brand}")

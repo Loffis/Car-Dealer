@@ -50,10 +50,10 @@ public class CarService {
     Loffe's input required!
     */
     @Cacheable(value = "carCache")
-    public List<Car> findByStatus() {
+    public List<Car> findByStatus(String status) {
         var cars = carRepository.findAll();
         cars = cars.stream()
-                .filter(car -> car.getStatus().equals("available")) // ändrade "==" till equals. Borde nog kunna funka!
+                .filter(car -> car.getStatus().equalsIgnoreCase(status)) // ändrade "==" till equals. Borde nog kunna funka!
                 .collect(Collectors.toList());
         return cars;
     }
@@ -62,7 +62,7 @@ public class CarService {
     public List<Car> findByBrand(String brand) {
         var cars = carRepository.findAll();
         cars = cars.stream()
-                .filter(car -> car.getBrand().toLowerCase().contains(brand))
+                .filter(car -> car.getBrand().equalsIgnoreCase(brand))
                 .collect(Collectors.toList());
         return cars;
     }

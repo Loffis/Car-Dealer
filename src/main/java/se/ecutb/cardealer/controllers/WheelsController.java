@@ -27,32 +27,32 @@ public class WheelsController {
         return ResponseEntity.ok(wheelsService.findById(id));
     }
 
-    @GetMapping("/rimMaterial={rimMaterial}")
+    @GetMapping("/rimMaterial={type}")
     public ResponseEntity<List<Wheels>> findWheelsByRimMaterial(@PathVariable String type){
         return ResponseEntity.ok(wheelsService.findByRimMaterial(type));
     }
 
-    @GetMapping("/rimColor={rimColor}")
+    @GetMapping("/rimColor={color}")
     public ResponseEntity<List<Wheels>> findWheelsByRimColor(@PathVariable String color) {
         return ResponseEntity.ok(wheelsService.findByRimColor(color));
     }
 
-    @GetMapping("/rimSize={rimSize}")
+    @GetMapping("/rimSize={size}")
     public ResponseEntity<List<Wheels>> findWheelsByRimSize(@PathVariable int size) {
         return ResponseEntity.ok(wheelsService.findByRimSize(size));
     }
 
-    @GetMapping("/tireWidth{tireWidth}")
+    @GetMapping("/tireWidth={width}")
     public ResponseEntity<List<Wheels>> findWheelsByTireWidth(@PathVariable int width){
         return ResponseEntity.ok(wheelsService.findByTireWidth(width));
     }
 
-    @GetMapping("/tireProfile{tireProfile}")
+    @GetMapping("/tireProfile={profile}")
     public ResponseEntity<List<Wheels>> findWheelsByTireProfile(@PathVariable int profile){
         return ResponseEntity.ok(wheelsService.findByTireProfile(profile));
     }
 
-    @GetMapping("/tireSpeedRating={tireSpeedRating}")
+    @GetMapping("/tireSpeedRating={rating}")
     public ResponseEntity<Wheels> findWheelsByTireSpeedRating(@PathVariable char rating){
         return ResponseEntity.ok(wheelsService.findByTireSpeedRating(rating));
     }

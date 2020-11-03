@@ -66,7 +66,7 @@ public class EngineService {
     public List<Engine> findByFuel(String fuel) {
         var engines = engineRepository.findAll();
         engines = engines.stream()
-                .filter(engine -> engine.getFuel().toLowerCase() == fuel.toLowerCase())
+                .filter(engine -> engine.getFuel().equalsIgnoreCase(fuel))
                 .collect(Collectors.toList());
         return engines;
     }

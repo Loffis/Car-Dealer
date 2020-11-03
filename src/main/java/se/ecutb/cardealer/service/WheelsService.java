@@ -57,8 +57,8 @@ public class WheelsService {
     public List<Wheels> findByRimSize(int size){
         var wheelsList = wheelsRepository.findAll();
         wheelsList = wheelsList.stream()
-                .filter(wheels -> wheels.getRimSizeFront() == size ||
-                        wheels.getRimSizeRear() == size)
+                .filter(wheels -> (wheels.getRimSizeFront() == size) ||
+                        (wheels.getRimSizeRear() == size))
                 .collect(Collectors.toList());
         return wheelsList;
    }

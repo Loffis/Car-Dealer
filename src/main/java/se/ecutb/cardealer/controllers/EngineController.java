@@ -36,12 +36,12 @@ public class EngineController {
         return ResponseEntity.ok(engineService.findByCylinder(cylinder));
     }
 
-    @GetMapping("/displacement={displacement}")
+    @GetMapping("/displacement={volume}")
     public ResponseEntity<Engine> findEngineByDisplacement(@PathVariable int volume){
         return ResponseEntity.ok(engineService.findByDisplacement(volume));
     }
 
-    @GetMapping("/torque={torque}")
+    @GetMapping("/torque={turns}")
     public ResponseEntity<Engine> findEngineByTorque(@PathVariable int turns){
         return ResponseEntity.ok(engineService.findByTorque(turns));
     }

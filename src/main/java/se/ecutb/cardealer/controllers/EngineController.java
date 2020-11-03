@@ -1,6 +1,5 @@
 package se.ecutb.cardealer.controllers;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -12,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/engines")
-@Slf4j
 public class EngineController {
 
     @Autowired

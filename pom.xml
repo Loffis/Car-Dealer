@@ -135,7 +135,7 @@
                     <dependency>
                         <groupId>org.springframework.restdocs</groupId>
                         <artifactId>spring-restdocs-asciidoctor</artifactId>
-                       <!-- <version>${spring-restdocs.version}</version>-->
+                        <version>${spring-restdocs.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -145,7 +145,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>copy-resources</id>

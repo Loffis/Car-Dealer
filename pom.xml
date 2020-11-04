@@ -19,7 +19,7 @@
         <jaxb.version>2.3.4</jaxb.version> <!-- <version>${jaxb.version}</version> -->
         <logstash-logback-encoder.version>6.4</logstash-logback-encoder.version>
         <org.projectlombok.version>1.18.12</org.projectlombok.version>
-        <spring-restdocs.version>2.0.5.RELEASE</spring-restdocs.version>
+        <spring-restdocs.version>1.6.0</spring-restdocs.version>
     </properties>
 
     <dependencies>

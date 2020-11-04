@@ -4,8 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -26,19 +25,23 @@ public class Car implements Serializable {
     @NotEmpty(message = EMPTY_FIELD_MSG)
     @Size(min = 3, max = 30, message = WRONG_SIZE_MSG)
     private String model;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Size(min = 1800, max = 2021, message = WRONG_SIZE_MSG) // OBS! Hårdkodat max-år!
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @Min(value = 1800, message = WRONG_SIZE_MSG)
+    @Max(value = 2021, message = WRONG_SIZE_MSG) // OBS! Hårdkodat max-år!
     private int yearModel;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Size(min = 50, max = 4000, message = WRONG_SIZE_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @Min(value = 50, message = WRONG_SIZE_MSG)
+    @Max(value = 4000, message = WRONG_SIZE_MSG)
     private int weight;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @Min(value = 1, message = WRONG_SIZE_MSG)
+    @Max(value = 9, message = WRONG_SIZE_MSG)
     @Size(min = 1, max = 9)
     private int seats;
     private List<String> equipment;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
     private Engine engine;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
     private Wheels wheels;
     //in stock, sold, reserved, scrapped
     @NotEmpty(message = EMPTY_FIELD_MSG)

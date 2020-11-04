@@ -4,9 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 
 import static se.ecutb.cardealer.constants.Messages.*;
@@ -26,25 +24,27 @@ public class Wheels implements Serializable {
     @NotEmpty(message = EMPTY_FIELD_MSG)
     @Size(min = 3, max = 64, message = WRONG_SIZE_MSG)
     private String rimColor;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Size(min = 13, max = 24, message = WRONG_SIZE_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @Min(value = 13, message = WRONG_SIZE_MSG)
+    @Max(value = 24, message = WRONG_SIZE_MSG)
     private int rimSizeFront;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Size(min = 13, max = 24, message = WRONG_SIZE_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @Min(value = 13, message = WRONG_SIZE_MSG)
+    @Max(value = 24, message = WRONG_SIZE_MSG)
     private int rimSizeRear;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
     @Pattern(regexp = TIRE_WIDTH_PATTERN, message = WRONG_TIRE_WIDTH_MSG)
     private int tireWidthFront;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
     @Pattern(regexp = TIRE_WIDTH_PATTERN, message = WRONG_TIRE_WIDTH_MSG)
     private int tireWidthRear;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
     @Pattern(regexp = TIRE_PROFILE_PATTERN, message = WRONG_TIRE_PROFILE_MSG)
     private int tireProfileFront;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
     @Pattern(regexp = TIRE_PROFILE_PATTERN, message = WRONG_TIRE_PROFILE_MSG)
     private int tireProfileRear;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
     @Pattern(regexp = TIRE_SPEED_RATING_PATTERN, message = WRONG_TIRE_SPEED_RATING_MSG)
     private char tireSpeedRating;
 

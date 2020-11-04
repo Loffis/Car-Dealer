@@ -4,12 +4,10 @@ import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 
-import static se.ecutb.cardealer.constants.Messages.EMPTY_FIELD_MSG;
-import static se.ecutb.cardealer.constants.Messages.WRONG_SIZE_MSG;
+import static se.ecutb.cardealer.constants.Messages.*;
 
 @Data
 @Builder
@@ -19,17 +17,21 @@ public class Engine implements Serializable {
 
     @Id
     private String id;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Size(min = 10, max = 2000, message = WRONG_SIZE_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @Min(value = 10, message = WRONG_MIN_VALUE_MSG)
+    @Max(value = 2000, message = WRONG_MAX_VALUE_MSG)
     private int effect;         // kw
-    @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Size(min = 1, max = 24, message = WRONG_SIZE_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @Min(value = 1, message = WRONG_MIN_VALUE_MSG)
+    @Max(value = 24, message = WRONG_MAX_VALUE_MSG)
     private int cylinders;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Size(min = 49, max = 12000, message = WRONG_SIZE_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @Min(value = 49, message = WRONG_MIN_VALUE_MSG)
+    @Max(value = 12000, message = WRONG_MAX_VALUE_MSG)
     private int displacement;   // cm3
-    @NotEmpty(message = EMPTY_FIELD_MSG)
-    @Size(min = 10, max = 2000, message = WRONG_SIZE_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @Min(value = 10, message = WRONG_MIN_VALUE_MSG)
+    @Max(value = 2000, message = WRONG_MAX_VALUE_MSG)
     private int torque;         // Nm
     @NotEmpty(message = EMPTY_FIELD_MSG)
     @Size(min = 3, max = 30, message = WRONG_SIZE_MSG)

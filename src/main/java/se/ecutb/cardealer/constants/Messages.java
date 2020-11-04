@@ -12,5 +12,7 @@ public class Messages {
     public static final String WRONG_TIRE_WIDTH_MSG = "Valid sizes are 135-355 mm, with steps of 10 mm.";
     public static final String WRONG_TIRE_PROFILE_MSG = "Valid sizes are 30-80 with steps of 5.";
     public static final String WRONG_TIRE_SPEED_RATING_MSG = "Valid ratings are B to Y.";
+    public static final String WRONG_MIN_VALUE_MSG = "Minimum {value}.";
+    public static final String WRONG_MAX_VALUE_MSG = "Max {value}.";
 
 }

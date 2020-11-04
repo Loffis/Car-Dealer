@@ -36,7 +36,6 @@ public class Car implements Serializable {
     @NotNull(message = EMPTY_FIELD_MSG)
     @Min(value = 1, message = WRONG_SIZE_MSG)
     @Max(value = 9, message = WRONG_SIZE_MSG)
-    @Size(min = 1, max = 9)
     private int seats;
     private List<String> equipment;
     @NotNull(message = EMPTY_FIELD_MSG)

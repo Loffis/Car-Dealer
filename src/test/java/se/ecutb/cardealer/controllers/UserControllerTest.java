@@ -1,25 +1,38 @@
 package se.ecutb.cardealer.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.RestDocumentationContextProvider;
+import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.payload.FieldDescriptor;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.StringUtils;
+import org.springframework.web.context.WebApplicationContext;
 import se.ecutb.cardealer.entities.User;
 import se.ecutb.cardealer.repository.UserRepository;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
@@ -27,10 +40,12 @@ import static org.springframework.restdocs.request.RequestDocumentation.pathPara
 import static org.springframework.restdocs.snippet.Attributes.key;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ExtendWith(RestDocumentationExtension.class)
 @AutoConfigureRestDocs(uriPort = 7000)
+@ActiveProfiles("test")
 public class UserControllerTest {
-    @Autowired
+
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
@@ -38,7 +53,18 @@ public class UserControllerTest {
     private UserRepository userRepository;
 
 
+
+    @BeforeEach
+    public void setUp(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
+                .apply(documentationConfiguration(restDocumentation))
+                .apply(SecurityMockMvcConfigurers.springSecurity())
+                .build();
+    }
+
+
     @Test
+    @WithMockUser(value = "admin", roles = {"ADMIN"})
     void findAllUsers() throws Exception {
         given(userRepository.findAll()).willReturn(List.of(User.builder().build()));
 
@@ -50,6 +76,7 @@ public class UserControllerTest {
     }
 
     @Test
+    @WithMockUser(value = "admin", roles = {"ADMIN"})
     void findUserById() throws Exception {
         given(userRepository.findById(any())).willReturn(Optional.of(User.builder().build()));
 
@@ -72,6 +99,7 @@ public class UserControllerTest {
     }
 
     @Test
+    @WithMockUser(value = "admin", roles = {"ADMIN"})
     void saveUser() throws Exception {
         User testUser = User.builder()
                 .name("Arne Anka")
@@ -117,6 +145,7 @@ public class UserControllerTest {
     }
 
     @Test
+    @WithMockUser(value = "admin", roles = {"ADMIN"})
     void updateUser() throws Exception {
         User testUser = User.builder()
                 .name("Arne Anka")
@@ -153,6 +182,7 @@ public class UserControllerTest {
     }
 
     @Test
+    @WithMockUser(value = "admin", roles = {"ADMIN"})
     void deleteUser() throws Exception {
         mockMvc.perform(delete("/api/v1/users/{id}", UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent())

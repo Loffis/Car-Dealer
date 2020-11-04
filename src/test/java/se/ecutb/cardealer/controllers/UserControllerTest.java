@@ -70,7 +70,7 @@ public class UserControllerTest {
 
         mockMvc.perform(get("/api/v1/users").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andDo(document("/api/v1/users-get-all"));
+                .andDo(document("/v1/users-get-all"));
 
 
     }
@@ -121,7 +121,7 @@ public class UserControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(userJson))
                 .andExpect(status().isOk())
-                .andDo(document("v1/users-new",
+                .andDo(document("v1/user-new",
                         requestFields(
                                 fields.withPath("id").ignored(),
                                 fields.withPath("name").description("User's first and last name"),
@@ -167,7 +167,7 @@ public class UserControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(userJson))
                 .andExpect(status().isNoContent())
-                .andDo(document("v1/users-update",
+                .andDo(document("v1/user-update",
                         pathParameters(
                                 parameterWithName("id").description("UUID of user to update.")
                         ),
@@ -189,7 +189,7 @@ public class UserControllerTest {
         given(userRepository.existsById(any())).willReturn(true);
         mockMvc.perform(delete("/api/v1/users/{id}", UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent())
-                .andDo(document("v1/users-delete",
+                .andDo(document("v1/user-delete",
                         pathParameters(
                                 parameterWithName("id").description("UUID of user to delete.")
                         )));

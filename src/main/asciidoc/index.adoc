@@ -1,0 +1,104 @@
+= CarDealer
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+
+`UserController`
+
+GET USERS
+
+Request using cUrl:
+
+include::{snippets}/v1/users-get-all/curl-request.adoc[]
+
+HTTP request:
+
+include::{snippets}/v1/users-get-all/http-request.adoc[]
+
+HTTP response:
+
+include::{snippets}/v1/users-get-all/http-response.adoc[]
+
+Response Body:
+
+include::{snippets}/v1/users-get-all/response-body.adoc[]
+
+GET USER
+
+Request using cURL:
+
+include::{snippets}/v1/users-get-one/curl-request.adoc[]
+
+HTTP request:
+
+include::{snippets}/v1/users-get-one/http-request.adoc[]
+
+HTTP response:
+
+include::{snippets}/v1/users-get-one/http-response.adoc[]
+
+Response Body:
+
+include::{snippets}/v1/users-get-one/response-body.adoc[]
+
+Response Fields:
+
+include::{snippets}/v1/users-get-one/response-fields.adoc[]
+
+SAVE USER
+
+Request using cURL:
+
+include::{snippets}/v1/user-new/curl-request.adoc[]
+
+HTTP request:
+
+include::{snippets}/v1/user-new/http-request.adoc[]
+
+HTTP response:
+
+include::{snippets}/v1/user-new/http-response.adoc[]
+
+Response Body:
+
+include::{snippets}/v1/user-new/response-body.adoc[]
+
+Request Fields:
+
+include::{snippets}/v1/user-new/request-fields.adoc[]
+
+Response Fields:
+
+include::{snippets}/v1/user-new/response-fields.adoc[]
+
+UPDATE USER
+
+Request using cURL:
+
+include::{snippets}/v1/user-update/curl-request.adoc[]
+
+HTTP request:
+
+include::{snippets}/v1/user-update/http-request.adoc[]
+
+HTTP response:
+
+include::{snippets}/v1/user-update/http-response.adoc[]
+
+Request Fields:
+
+include::{snippets}/v1/user-update/request-fields.adoc[]
+
+DELETE USER
+
+Request using cURL:
+
+include::{snippets}/v1/user-delete/curl-request.adoc[]
+
+HTTP request:
+
+include::{snippets}/v1/user-delete/http-request.adoc[]
+
+HTTP response:
+
+include::{snippets}/v1/user-delete/http-response.adoc[]

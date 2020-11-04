@@ -120,14 +120,14 @@ public class UserControllerTest {
         mockMvc.perform(post("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(userJson))
-                .andExpect(status().isCreated())
+                .andExpect(status().isOk())
                 .andDo(document("v1/users-new",
                         requestFields(
                                 fields.withPath("id").ignored(),
                                 fields.withPath("name").description("User's first and last name"),
                                 fields.withPath("birthday").description("Birthday").type(LocalDate.class),
                                 fields.withPath("username").description("Username"),
-                                fields.withPath("password").description("Password"),
+                                fields.withPath("password").ignored(),
                                 fields.withPath("email").description("Email"),
                                 fields.withPath("phonenumber").description("Phone number"),
                                 fields.withPath("acl").description("Access Control List")
@@ -161,6 +161,8 @@ public class UserControllerTest {
 
         ConstrainedFields fields = new ConstrainedFields(User.class);
 
+        given(userRepository.existsById(any())).willReturn(true);
+
         mockMvc.perform(put("/api/v1/users/{id}", UUID.randomUUID().toString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(userJson))
@@ -170,7 +172,7 @@ public class UserControllerTest {
                                 parameterWithName("id").description("UUID of user to update.")
                         ),
                         requestFields(
-                                fields.withPath("id").ignored(),
+                                fields.withPath("id").description("UUID of user"),
                                 fields.withPath("name").description("User's first and last name"),
                                 fields.withPath("birthday").description("Birthday").type(LocalDate.class),
                                 fields.withPath("username").description("Username"),
@@ -184,6 +186,7 @@ public class UserControllerTest {
     @Test
     @WithMockUser(value = "admin", roles = {"ADMIN"})
     void deleteUser() throws Exception {
+        given(userRepository.existsById(any())).willReturn(true);
         mockMvc.perform(delete("/api/v1/users/{id}", UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent())
                 .andDo(document("v1/users-delete",

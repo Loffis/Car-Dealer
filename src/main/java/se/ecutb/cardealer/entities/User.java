@@ -28,7 +28,7 @@ public class User implements Serializable {
     @NotEmpty(message = EMPTY_FIELD_MSG)
     @Size(min = 3, max = 40, message = WRONG_SIZE_MSG)
     private String name;
-    @NotEmpty(message = EMPTY_FIELD_MSG)
+    @NotNull(message = EMPTY_FIELD_MSG)
     @Past(message = WRONG_DATE_MSG)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
@@ -37,8 +37,8 @@ public class User implements Serializable {
     private String username;
     @NotEmpty(message = EMPTY_FIELD_MSG)
     @Size(min = 4, max = 40, message = WRONG_SIZE_MSG)
-    @JsonIgnore
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //@JsonIgnore
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @NotEmpty(message = EMPTY_FIELD_MSG)
     @Email(message= WRONG_EMAIL_MSG)

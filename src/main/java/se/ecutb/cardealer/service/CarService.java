@@ -85,7 +85,9 @@ public class CarService {
 
 
     @CachePut(value = "carCache", key = "#result.id")
-    public Car save(Car car){
+    public Car save(Car car/*, Engine engine, Wheels wheels*/){
+        //car.setEngine(engine);
+        //car.setWheels(wheels);
         return carRepository.save(car);
     }
 

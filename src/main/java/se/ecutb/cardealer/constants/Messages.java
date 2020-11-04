@@ -14,5 +14,7 @@ public class Messages {
     public static final String WRONG_TIRE_SPEED_RATING_MSG = "Valid ratings are B to Y.";
     public static final String WRONG_MIN_VALUE_MSG = "Minimum {value}.";
     public static final String WRONG_MAX_VALUE_MSG = "Max {value}.";
+    public static final String WRONG_REGNUMBER_MSG =
+            "Not a correct registration number. Example of correct registration numbers: AAA111 or AAA11A.";
 
 }

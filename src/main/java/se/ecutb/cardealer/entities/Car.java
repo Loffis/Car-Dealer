@@ -8,8 +8,8 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.List;
 
-import static se.ecutb.cardealer.constants.Messages.EMPTY_FIELD_MSG;
-import static se.ecutb.cardealer.constants.Messages.WRONG_SIZE_MSG;
+import static se.ecutb.cardealer.constants.Messages.*;
+import static se.ecutb.cardealer.constants.RegExp.REGNUMBER_PATTERN;
 
 @Data
 @Builder
@@ -19,6 +19,9 @@ public class Car implements Serializable {
 
     @Id
     private String id;
+    @NotEmpty(message = EMPTY_FIELD_MSG)
+    @Pattern(regexp = REGNUMBER_PATTERN, message = WRONG_REGNUMBER_MSG)
+    private String registrationNumber;
     @NotEmpty(message = EMPTY_FIELD_MSG)
     @Size(min = 3, max = 30, message = WRONG_SIZE_MSG)
     private String brand;

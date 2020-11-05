@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class UserService {
     private final UserRepository userRepository;
 
-    @Cacheable(value = "userCache")
+    @Cacheable(value = "carCache")
     public List<User> findAll(String name, boolean sortOnBirthday) {
         log.info("Request to find all users");
         log.info("Fresh data...");
@@ -37,7 +37,7 @@ public class UserService {
         return users;
     }
 
-    @Cacheable(value = "userCache", key = "#id")
+    @Cacheable(value = "carCache", key = "#id")
     public User findById(String id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, // 404 -> Not found
@@ -50,13 +50,13 @@ public class UserService {
                         String.format("Could not find the user by username %s", username)));
     }
 
-    @CachePut(value = "userCache", key = "#result.id")
+    @CachePut(value = "carCache", key = "#result.id")
     public User save(User user){
         return userRepository.save(user);
     }
 
     //Kanske behövs ändra en del för att kunna anpassa vad vi behöver
-    @CachePut(value = "userCache", key = "#id")
+    @CachePut(value = "carCache", key = "#id")
     public void update(String id, User user) {
         /*var isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
                 .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().toUpperCase().equals("ROLES_ADMIN"));
@@ -75,7 +75,7 @@ public class UserService {
     }
 
 
-    @CacheEvict(value = "userCache", key = "#id")
+    @CacheEvict(value = "carCache", key = "#id")
     public void delete(String id) {
         if (!userRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,

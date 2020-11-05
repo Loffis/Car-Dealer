@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>CarDealer</title>
+<title>CarDealer by Jonatan &amp; Loffe</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -439,7 +439,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book">
 <div id="header">
-<h1>CarDealer</h1>
+<h1>CarDealer by Jonatan &amp; Loffe</h1>
 </div>
 <div id="content">
 <div id="preamble">
@@ -455,7 +455,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/api/v1/users' -i -X GET \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/api/v1/users' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -464,7 +464,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/users HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">GET /api/v1/users HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -474,7 +474,7 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
@@ -492,7 +492,7 @@ Content-Length: 116
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-none hljs">[{"id":null,"name":null,"birthday":null,"username":null,"password":null,"email":null,"phonenumber":null,"acl":null}]</code></pre>
+<pre class="prettyprint highlight nowrap"><code>[{"id":null,"name":null,"birthday":null,"username":null,"password":null,"email":null,"phonenumber":null,"acl":null}]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -503,7 +503,7 @@ Content-Length: 116
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/api/v1/users/876c8e5a-a52a-4199-bd4e-23128f8db2a2' -i -X GET \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/api/v1/users/429cbda0-bb95-4b26-b1b6-91b2fff0955b' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -512,7 +512,7 @@ Content-Length: 116
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/users/876c8e5a-a52a-4199-bd4e-23128f8db2a2 HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">GET /api/v1/users/429cbda0-bb95-4b26-b1b6-91b2fff0955b HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -522,7 +522,7 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
@@ -540,7 +540,7 @@ Content-Length: 114
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-none hljs">{"id":null,"name":null,"birthday":null,"username":null,"password":null,"email":null,"phonenumber":null,"acl":null}</code></pre>
+<pre class="prettyprint highlight nowrap"><code>{"id":null,"name":null,"birthday":null,"username":null,"password":null,"email":null,"phonenumber":null,"acl":null}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -610,7 +610,7 @@ Content-Length: 114
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/api/v1/users' -i -X POST \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/api/v1/users' -i -X POST \
     -H 'Content-Type: application/json' \
     -d '{"id":null,"name":"Arne Anka","birthday":"1990-01-01","username":"ankan","password":"1234","email":"arne@anka.com","phonenumber":"010-123456","acl":["TESTUSER"]}'</code></pre>
 </div>
@@ -620,7 +620,7 @@ Content-Length: 114
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/users HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">POST /api/v1/users HTTP/1.1
 Content-Type: application/json
 Content-Length: 161
 Host: localhost:8080
@@ -633,7 +633,7 @@ Host: localhost:8080
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
@@ -651,7 +651,7 @@ Content-Length: 114
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-none hljs">{"id":null,"name":null,"birthday":null,"username":null,"password":null,"email":null,"phonenumber":null,"acl":null}</code></pre>
+<pre class="prettyprint highlight nowrap"><code>{"id":null,"name":null,"birthday":null,"username":null,"password":null,"email":null,"phonenumber":null,"acl":null}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -770,7 +770,7 @@ Content-Length: 114
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/api/v1/users/aa9cdfe2-5128-47b9-b181-a121bc9a65ce' -i -X PUT \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/api/v1/users/a6d81ce8-c3ea-4bee-b6b9-baa39c891fb6' -i -X PUT \
     -H 'Content-Type: application/json' \
     -d '{"id":null,"name":"Arne Anka","birthday":"1990-01-01","username":"ankan","password":"1234","email":"arne@anka.com","phonenumber":"010-123456","acl":["TESTUSER"]}'</code></pre>
 </div>
@@ -780,7 +780,7 @@ Content-Length: 114
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /api/v1/users/aa9cdfe2-5128-47b9-b181-a121bc9a65ce HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">PUT /api/v1/users/a6d81ce8-c3ea-4bee-b6b9-baa39c891fb6 HTTP/1.1
 Content-Type: application/json
 Content-Length: 161
 Host: localhost:8080
@@ -793,7 +793,7 @@ Host: localhost:8080
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 204 No Content
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 204 No Content
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -869,7 +869,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/api/v1/users/f991dfc4-4fcf-4e95-a77a-10c1ac2beb5b' -i -X DELETE \
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/api/v1/users/85f6a096-a4f3-4fdb-a018-9a28fd2f1304' -i -X DELETE \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -878,7 +878,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/v1/users/f991dfc4-4fcf-4e95-a77a-10c1ac2beb5b HTTP/1.1
+<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /api/v1/users/85f6a096-a4f3-4fdb-a018-9a28fd2f1304 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -888,7 +888,7 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 204 No Content
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 204 No Content
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -902,11 +902,10 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-04 14:54:39 +0100
+Last updated 2020-11-05 10:23:27 +0100
 </div>
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
 </body>
 </html>

@@ -17,10 +17,16 @@ public class CarController {
     @Autowired
     private CarService carService;
 
+    @GetMapping
+    public ResponseEntity<List<Car>> findAllForGuests(@RequestParam(required = false) String brand,
+                                                     @RequestParam(required = false) String model){
+        return ResponseEntity.ok(carService.findAllForGuests(brand, model));
+    }
+
     //@Secured({"ROLE_USER", "ROLE_DEALER", "ROLE_ADMIN"})
     @GetMapping
     public ResponseEntity<List<Car>> findAllCars(@RequestParam(required = false) String regNumber,
-                                                 @RequestParam(required = false) String name,
+                                                 @RequestParam(required = false) String brand,
                                                  @RequestParam(required = false) String model,
                                                  @RequestParam(required = false) String yearModel,
                                                  @RequestParam(required = false) String weight,
@@ -33,7 +39,7 @@ public class CarController {
                                                  @RequestParam(required = false) boolean sortByYear,
                                                  @RequestParam(required = false) boolean sortByStatus){
 
-        return ResponseEntity.ok(carService.findAll(regNumber ,name, model, yearModel, weight, seats, equipment, status,
+        return ResponseEntity.ok(carService.findAll(regNumber ,brand, model, yearModel, weight, seats, equipment, status,
                 sortByModel, sortByWeight, sortBySeats, sortByYear, sortByStatus));
     }
 

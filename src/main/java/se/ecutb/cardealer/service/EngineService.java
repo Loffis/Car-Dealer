@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class EngineService {
     private final EngineRepository engineRepository;
 
-    @Cacheable(value = "engineCache")
+    @Cacheable(value = "carCache")
     public List<Engine> findAll(){
         log.info("Request to find all engines");
         log.info("Fresh data...");
@@ -28,41 +28,41 @@ public class EngineService {
         return engines;
     }
 
-    @Cacheable(value = "engineCache", key ="#id")
+    @Cacheable(value = "carCache", key ="#id")
     public Engine findById(String id) {
         return engineRepository.findById(id).
                 orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         String.format("Can't find the engine %s by id", id)));
     }
 
-    @Cacheable(value = "engineCache")
+    @Cacheable(value = "carCache")
     public Engine findByEffect(int effect) {
         return engineRepository.findByEffect(effect)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         String.format("Could not find the engine %s by effect", effect)));
     }
 
-    @Cacheable(value = "engineCache")
+    @Cacheable(value = "carCache")
     public Engine findByCylinder(int cylinder){
         return engineRepository.findByCylinders(cylinder)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         String.format("Could not find the engine %s by amount of cylinders", cylinder)));
     }
 
-    @Cacheable(value = "engineCache")
+    @Cacheable(value = "carCache")
     public Engine findByDisplacement(int volume) {
         return engineRepository.findByDisplacement(volume)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         String.format("Could not find the engine %s by volume", volume)));
     }
-    @Cacheable(value = "engineCache")
+    @Cacheable(value = "carCache")
     public Engine findByTorque(int turns) {
         return engineRepository.findByTorque(turns)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         String.format("Could not find the engine %s", turns)));
     }
 
-    @Cacheable(value = "engineCache")
+    @Cacheable(value = "carCache")
     public List<Engine> findByFuel(String fuel) {
         var engines = engineRepository.findAll();
         engines = engines.stream()
@@ -71,12 +71,12 @@ public class EngineService {
         return engines;
     }
 
-    @CachePut(value = "engineCache", key= "#result.id")
+    @CachePut(value = "carCache", key= "#result.id")
     public void save(Engine engine){
         engineRepository.save(engine);
     }
 
-    @CachePut(value = "engineCache", key = "#id")
+    @CachePut(value = "carCache", key = "#id")
     public void update(String id, Engine engine) {
         if(!engineRepository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
@@ -85,7 +85,7 @@ public class EngineService {
         engine.setId(id);
         engineRepository.save(engine);
     }
-    @CacheEvict(value = "engineCache", key = "#id")
+    @CacheEvict(value = "carCache", key = "#id")
     public void delete(String id){
         if(!engineRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,

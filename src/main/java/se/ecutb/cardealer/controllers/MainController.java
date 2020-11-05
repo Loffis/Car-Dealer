@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
-    @RequestMapping(method = RequestMethod.GET, value = {"/", "/home", "/api", "/api/v1"})
+    @RequestMapping(method = RequestMethod.GET, value = {"/", "/home", "/api"})
     public ModelAndView showIndex() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index.html");

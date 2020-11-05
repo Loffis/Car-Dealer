@@ -34,8 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()// Stäng av standardformulär
                 .csrf().disable()     // Stäng av csrf-skyddet
                 .authorizeRequests()
-                .antMatchers("/api/open/**").permitAll()
-                .antMatchers("/api/v1/**").permitAll()
+                .antMatchers("/api/v1/cars/free/**").permitAll()
+                .antMatchers("/api/v1/**").authenticated()
                 .antMatchers("/**").permitAll()
                 .and()
                 .httpBasic().authenticationEntryPoint(entryPoint)

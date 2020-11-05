@@ -29,11 +29,9 @@ public class Engine implements Serializable {
     @Min(value = 49, message = WRONG_MIN_VALUE_MSG)
     @Max(value = 12000, message = WRONG_MAX_VALUE_MSG)
     private int displacement;   // cm3
-    @NotNull(message = EMPTY_FIELD_MSG)
     @Min(value = 10, message = WRONG_MIN_VALUE_MSG)
     @Max(value = 2000, message = WRONG_MAX_VALUE_MSG)
     private int torque;         // Nm
-    @NotEmpty(message = EMPTY_FIELD_MSG)
     @Size(min = 3, max = 30, message = WRONG_SIZE_MSG)
     private String fuel;
 

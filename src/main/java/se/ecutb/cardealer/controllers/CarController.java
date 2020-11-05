@@ -22,7 +22,7 @@ public class CarController {
     public ResponseEntity<List<Car>> findAllCars(@RequestParam(required = false) String regNumber,
                                                  @RequestParam(required = false) String name,
                                                  @RequestParam(required = false) String model,
-                                                 @RequestParam(required = false) int yearModel,
+                                                 @RequestParam(required = false) String yearModel,
                                                  @RequestParam(required = false) int weight,
                                                  @RequestParam(required = false) int seats,
                                                  @RequestParam(required = false) String equipment,

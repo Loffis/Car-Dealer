@@ -25,7 +25,7 @@ public class CarService {
     private final CarRepository carRepository;
 
     @Cacheable(value = "carCache")
-    public List<Car> findAll(String regNumber ,String brand, String model, int yearModel, int weight, int seats,
+    public List<Car> findAll(String regNumber ,String brand, String model, String yearModel, int weight, int seats,
             String equipment, String status, boolean sortByModel , boolean sortByWeight, boolean sortBySeats,
                              boolean sortByYear, boolean sortByStatus){
         log.info("Requesting to find all cars...");
@@ -53,10 +53,17 @@ public class CarService {
                             String.format("Can't find the car %s by model", model)));
         }
 
-        if (yearModel != 0){
+        if (yearModel != null){
             log.info("Search by yearmodel " + yearModel);
+            int yearModelInt = 0;
+            try {
+                yearModelInt = Integer.parseInt(yearModel);
+            } catch (NumberFormatException e) {
+                log.error("This is not a year. ERROR: " + e);
+            }
+            int finalYearModelInt = yearModelInt;
             cars = cars.stream()
-                    .filter(car -> car.getYearModel() == yearModel)
+                    .filter(car -> car.getYearModel() == finalYearModelInt)
                     .collect(Collectors.toList());
         }
 
@@ -83,8 +90,9 @@ public class CarService {
 
         if (equipment != null) {
             log.info("Search by equipment " + equipment);
-            cars.stream()
-                    .filter(car -> car.getEquipment().contains(equipment));
+            cars = cars.stream()
+                    .filter(car -> car.getEquipment().contains(equipment.toLowerCase()))
+                    .collect(Collectors.toList());
         }
 
         if (sortByModel){

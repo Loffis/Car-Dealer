@@ -1,4 +1,5 @@
 package se.ecutb.cardealer.config;
+
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.stereotype.Component;

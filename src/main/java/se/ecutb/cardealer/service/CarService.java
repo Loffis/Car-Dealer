@@ -33,7 +33,7 @@ public class CarService {
         var cars = carRepository.findAll();
 
         if(regNumber != null){
-            carRepository.findByRegNumber(regNumber).
+            carRepository.findByRegistrationNumber(regNumber).
                     orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                             String.format("Can't find the car %s by regnumber", regNumber)));
         }

@@ -42,15 +42,15 @@ public class CarService {
         if (brand!= null){
             log.info("Search by brand " + brand);
             cars = cars.stream()
-                    .filter(car -> car.getBrand().contains(brand))
+                    .filter(car -> car.getBrand().contains(brand.toLowerCase()))
                     .collect(Collectors.toList());
         }
 
         if(model != null){
             log.info("Search by model " + model);
-            carRepository.findByModel(model)
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                            String.format("Can't find the car %s by model", model)));
+            cars = cars.stream()
+                    .filter(car -> car.getModel().contains(model.toLowerCase()))
+                    .collect(Collectors.toList());
         }
 
         if (yearModel != null){
@@ -98,7 +98,7 @@ public class CarService {
         if (status != null) {
             log.info("Search by car that is " + status);
             cars = cars.stream()
-                    .filter(car -> car.getStatus().equalsIgnoreCase(status))
+                    .filter(car -> car.getStatus().equalsIgnoreCase(status.toLowerCase()))
                     .collect(Collectors.toList());
         }
 

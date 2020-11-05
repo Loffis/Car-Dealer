@@ -19,9 +19,22 @@ public class CarController {
 
     //@Secured({"ROLE_USER", "ROLE_DEALER", "ROLE_ADMIN"})
     @GetMapping
-    public ResponseEntity<List<Car>> findAllCars(@RequestParam(required = false) String name,
-                                                 @RequestParam(required = false) boolean sort){
-        return ResponseEntity.ok(carService.findAll(name, sort));
+    public ResponseEntity<List<Car>> findAllCars(@RequestParam(required = false) String regNumber,
+                                                 @RequestParam(required = false) String name,
+                                                 @RequestParam(required = false) String model,
+                                                 @RequestParam(required = false) int yearModel,
+                                                 @RequestParam(required = false) int weight,
+                                                 @RequestParam(required = false) int seats,
+                                                 @RequestParam(required = false) String equipment,
+                                                 @RequestParam(required = false) String status,
+                                                 @RequestParam(required = false) boolean sortByModel,
+                                                 @RequestParam(required = false) boolean sortByWeight,
+                                                 @RequestParam(required = false) boolean sortBySeats,
+                                                 @RequestParam(required = false) boolean sortByYear,
+                                                 @RequestParam(required = false) boolean sortByStatus){
+
+        return ResponseEntity.ok(carService.findAll(regNumber ,name, model, yearModel, weight, seats, equipment, status,
+                sortByModel, sortByWeight, sortBySeats, sortByYear, sortByStatus));
     }
 
     //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
@@ -30,7 +43,7 @@ public class CarController {
         return ResponseEntity.ok(carService.findbyId(id));
     }
 
-    //@Secured({"ROLE_USER", "ROLE_DEALER", "ROLE_ADMIN"})
+    /*@Secured({"ROLE_USER", "ROLE_DEALER", "ROLE_ADMIN"})
     @GetMapping("/status={status}")
     public ResponseEntity<List<Car>> findCarsByStatus(@PathVariable String status){
         return ResponseEntity.ok(carService.findByStatus(status));
@@ -52,7 +65,7 @@ public class CarController {
     @GetMapping("/seats={seats}")
     public ResponseEntity<List<Car>> findCarsBySeats(@PathVariable int seats){
         return ResponseEntity.ok(carService.findBySeats(seats));
-    }
+    }*/
 
     //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @PostMapping

@@ -18,32 +18,32 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
+    @Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @GetMapping
     public ResponseEntity<List<User>> findAllUser(@RequestParam(required = false) String name, boolean sort){
         return ResponseEntity.ok(userService.findAll(name, sort));
     }
-    //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
+    @Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @GetMapping("/{id}")
     public ResponseEntity<User> findUserById(@PathVariable String id) {
         return ResponseEntity.ok(userService.findById(id));
     }
 
-    //@Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<User> saveUser(@Validated @RequestBody User user) {
         return ResponseEntity.ok(userService.save(user));
     }
 
-    //@Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateUser (@PathVariable String id, @Validated @RequestBody User user){
         userService.update(id, user);
     }
 
-    //@Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable String id) {

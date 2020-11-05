@@ -15,7 +15,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//Backup-plan: En sökmetod istället för flera
 
 @Service
 @Slf4j
@@ -178,39 +177,6 @@ public class CarService {
                 orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         String.format("Can't find the car %s by id", id)));
     }
-    /*@Cacheable(value = "carCache")
-    public List<Car> findByStatus(String status) {
-        var cars = carRepository.findAll();
-        cars = cars.stream()
-                .filter(car -> car.getStatus().equalsIgnoreCase(status)) // ändrade "==" till equals. Borde nog kunna funka!
-                .collect(Collectors.toList());
-        return cars;
-    }
-
-    @Cacheable(value = "carCache")
-    public List<Car> findByBrand(String brand) {
-        var cars = carRepository.findAll();
-        cars = cars.stream()
-                .filter(car -> car.getBrand().equalsIgnoreCase(brand))
-                .collect(Collectors.toList());
-        return cars;
-    }
-
-    @Cacheable(value = "carCache")
-    public Car findByModel(String model) {
-        return carRepository.findByModel(model)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                        String.format("Can't find the car %s by model", model)));
-    }
-
-    @Cacheable(value = "carCache")
-    public List<Car> findBySeats(int seats) {
-        var cars = carRepository.findAll();
-        cars = cars.stream()
-                .filter(car -> car.getSeats() == seats)
-                .collect(Collectors.toList());
-        return cars;
-    }*/
 
 
     @CachePut(value = "carCache")

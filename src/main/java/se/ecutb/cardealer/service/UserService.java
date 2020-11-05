@@ -55,16 +55,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    //Kanske behövs ändra en del för att kunna anpassa vad vi behöver
     @CachePut(value = "carCache", key = "#id")
     public void update(String id, User user) {
-        /*var isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
-                .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().toUpperCase().equals("ROLES_ADMIN"));
-        var isCurrentUser = SecurityContextHolder.getContext().getAuthentication()
-                .getName().toLowerCase().equals(user.getUsername().toLowerCase());
-        if(!isAdmin && !isCurrentUser){
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Update only your own details, you're not admin");
-        }*/
         if(!userRepository.existsById(id)) {
             log.error(String.format("Could not find the user by id %s.", id));
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, // 404 -> Not found

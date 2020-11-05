@@ -3,7 +3,6 @@ package se.ecutb.cardealer.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import se.ecutb.cardealer.entities.Wheels;
@@ -68,7 +67,7 @@ public class WheelsController {
 
     //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @PostMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Wheels> saveWheels(@Validated @RequestBody Wheels wheels){
         return ResponseEntity.ok(wheelsService.save(wheels));
     }
@@ -82,7 +81,7 @@ public class WheelsController {
 
     //@Secured({"ROLE_ADMIN"})
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteWheels(@PathVariable String id){
         wheelsService.delete(id);
     }

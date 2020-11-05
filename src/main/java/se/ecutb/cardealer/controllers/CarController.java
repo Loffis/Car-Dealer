@@ -3,7 +3,6 @@ package se.ecutb.cardealer.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import se.ecutb.cardealer.entities.Car;
@@ -51,32 +50,9 @@ public class CarController {
         return ResponseEntity.ok(carService.findbyId(id));
     }
 
-    /*@Secured({"ROLE_USER", "ROLE_DEALER", "ROLE_ADMIN"})
-    @GetMapping("/status={status}")
-    public ResponseEntity<List<Car>> findCarsByStatus(@PathVariable String status){
-        return ResponseEntity.ok(carService.findByStatus(status));
-    }
-
-    //@Secured({"ROLE_USER", "ROLE_DEALER", "ROLE_ADMIN"})
-    @GetMapping("/brand={brand}")
-    public ResponseEntity<List<Car>> findCarsByBrand(@PathVariable String brand){
-        return ResponseEntity.ok(carService.findByBrand(brand));
-    }
-
-    //@Secured({"ROLE_USER", "ROLE_DEALER", "ROLE_ADMIN"})
-    @GetMapping("/model={model}")
-    public ResponseEntity<Car> findCarByModel(@PathVariable String model){
-        return ResponseEntity.ok(carService.findByModel(model));
-    }
-
-    //@Secured({"ROLE_USER", "ROLE_DEALER", "ROLE_ADMIN"})
-    @GetMapping("/seats={seats}")
-    public ResponseEntity<List<Car>> findCarsBySeats(@PathVariable int seats){
-        return ResponseEntity.ok(carService.findBySeats(seats));
-    }*/
-
     //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @PostMapping
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Car> saveCar(@Validated @RequestBody Car car){
         return ResponseEntity.ok(carService.save(car));
     }

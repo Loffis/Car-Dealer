@@ -1,8 +1,8 @@
 package se.ecutb.cardealer.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import se.ecutb.cardealer.entities.Engine;
@@ -61,18 +61,21 @@ public class EngineController {
 
     //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @PostMapping
+    @ResponseStatus(HttpStatus.OK)
     public void saveEngine(@Validated @RequestBody Engine engine){
         engineService.save(engine);
     }
 
     //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateEngine(@PathVariable String id, @Validated @RequestBody Engine engine){
         engineService.update(id, engine);
     }
 
     //@Secured({"ROLE_ADMIN"})
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteEngine(@PathVariable String id) {
         engineService.delete(id);
     }

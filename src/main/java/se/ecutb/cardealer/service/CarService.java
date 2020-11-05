@@ -33,23 +33,22 @@ public class CarService {
         var cars = carRepository.findAll();
 
         if(regNumber != null){
-            carRepository.findByRegistrationNumber(regNumber).
-                    orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                            String.format("Can't find the car %s by regnumber", regNumber)));
+            cars = cars.stream()
+                    .filter(car -> car.getRegistrationNumber().toLowerCase().contains(regNumber.toLowerCase()))
+                    .collect(Collectors.toList());
         }
-
 
         if (brand!= null){
             log.info("Search by brand " + brand);
             cars = cars.stream()
-                    .filter(car -> car.getBrand().contains(brand.toLowerCase()))
+                    .filter(car -> car.getBrand().toLowerCase().contains(brand.toLowerCase()))
                     .collect(Collectors.toList());
         }
 
         if(model != null){
             log.info("Search by model " + model);
             cars = cars.stream()
-                    .filter(car -> car.getModel().contains(model.toLowerCase()))
+                    .filter(car -> car.getModel().toLowerCase().contains(model.toLowerCase()))
                     .collect(Collectors.toList());
         }
 
@@ -98,7 +97,7 @@ public class CarService {
         if (status != null) {
             log.info("Search by car that is " + status);
             cars = cars.stream()
-                    .filter(car -> car.getStatus().equalsIgnoreCase(status.toLowerCase()))
+                    .filter(car -> car.getStatus().equalsIgnoreCase(status))
                     .collect(Collectors.toList());
         }
 

@@ -34,9 +34,11 @@ public class CarService {
         if (brand != null) {
             cars = cars.stream().filter(car -> car.getBrand().toLowerCase().contains(brand.toLowerCase()))
                     .map(car -> Car.builder()
-                    .brand(car.getBrand())
-                    .model(car.getModel())
-                    .build())
+                            .brand(car.getBrand())
+                            .model(car.getModel())
+                            .yearModel(car.getYearModel())
+                            .status(car.getStatus())
+                            .build())
                     .collect(Collectors.toList());
         }
 
@@ -45,6 +47,17 @@ public class CarService {
                     .map(car -> Car.builder()
                             .brand(car.getBrand())
                             .model(car.getModel())
+                            .yearModel(car.getYearModel())
+                            .status(car.getStatus())
+                            .build())
+                    .collect(Collectors.toList());
+        } else {
+            cars = cars.stream()
+                    .map(car -> Car.builder()
+                            .brand(car.getBrand())
+                            .model(car.getModel())
+                            .yearModel(car.getYearModel())
+                            .status(car.getStatus())
                             .build())
                     .collect(Collectors.toList());
         }

@@ -33,3 +33,7 @@ build/
 ### VS Code ###
 .vscode/
 
+/logs/user-error.log
+/logs/user-error-details.log
+/logs/user-info.log
+/logs/user-warn.log

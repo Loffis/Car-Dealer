@@ -37,8 +37,6 @@ public class User implements Serializable {
     private String username;
     @NotEmpty(message = EMPTY_FIELD_MSG)
     @Size(min = 4, max = 40, message = WRONG_SIZE_MSG)
-    //@JsonIgnore
-    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @NotEmpty(message = EMPTY_FIELD_MSG)
     @Email(message= WRONG_EMAIL_MSG)

@@ -71,7 +71,7 @@ public class EngineService {
         return engines;
     }
 
-    @CachePut(value = "carCache", key= "#result.id")
+    @CachePut(value = "carCache")
     public void save(Engine engine){
         engineRepository.save(engine);
     }

@@ -26,13 +26,14 @@ public class CarService {
 
     @Cacheable(value = "carCache")
     public List<Car> findAllForGuests (String brand, String model){
+        log.info("Get cars for guest");
 
         var cars = carRepository.findAll();
 
 
         if (brand != null) {
-            cars.stream().filter(car -> car.getBrand().toLowerCase().contains(brand.toLowerCase()))
-                    .map(car -> car.builder()
+            cars = cars.stream().filter(car -> car.getBrand().toLowerCase().contains(brand.toLowerCase()))
+                    .map(car -> Car.builder()
                     .brand(car.getBrand())
                     .model(car.getModel())
                     .build())
@@ -40,8 +41,8 @@ public class CarService {
         }
 
         if (model != null) {
-            cars.stream().filter(car -> car.getModel().toLowerCase().contains(model.toLowerCase()))
-                    .map(car -> car.builder()
+            cars = cars.stream().filter(car -> car.getModel().toLowerCase().contains(model.toLowerCase()))
+                    .map(car -> Car.builder()
                             .brand(car.getBrand())
                             .model(car.getModel())
                             .build())

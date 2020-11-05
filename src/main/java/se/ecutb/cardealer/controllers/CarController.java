@@ -17,14 +17,15 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-    @GetMapping
+    @GetMapping("/free")
     public ResponseEntity<List<Car>> findAllForGuests(@RequestParam(required = false) String brand,
                                                      @RequestParam(required = false) String model){
         return ResponseEntity.ok(carService.findAllForGuests(brand, model));
+
     }
 
     //@Secured({"ROLE_USER", "ROLE_DEALER", "ROLE_ADMIN"})
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<Car>> findAllCars(@RequestParam(required = false) String regNumber,
                                                  @RequestParam(required = false) String brand,
                                                  @RequestParam(required = false) String model,

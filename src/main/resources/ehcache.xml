@@ -7,7 +7,7 @@
     <cache-template name="default">
         <expiry>
             <!-- TODO! Time set just for testing! -->
-            <ttl unit="seconds">10</ttl>
+            <ttl unit="seconds">30</ttl>
         </expiry>
         <listeners>
             <listener>

@@ -25,6 +25,12 @@ public class CarService {
     private final CarRepository carRepository;
 
     @Cacheable(value = "carCache")
+    public List<Car> findAllForGuests (String brand, String model, String yearModel, String seats, String equipment){
+
+    }
+
+
+    @Cacheable(value = "carCache")
     public List<Car> findAll(String regNumber ,String brand, String model, String yearModel, String weight, String seats,
             String equipment, String status, boolean sortByModel , boolean sortByWeight, boolean sortBySeats,
                              boolean sortByYear, boolean sortByStatus){

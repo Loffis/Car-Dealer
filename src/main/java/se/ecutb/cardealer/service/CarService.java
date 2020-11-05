@@ -25,7 +25,7 @@ public class CarService {
     private final CarRepository carRepository;
 
     @Cacheable(value = "carCache")
-    public List<Car> findAll(String regNumber ,String brand, String model, String yearModel, int weight, int seats,
+    public List<Car> findAll(String regNumber ,String brand, String model, String yearModel, String weight, String seats,
             String equipment, String status, boolean sortByModel , boolean sortByWeight, boolean sortBySeats,
                              boolean sortByYear, boolean sortByStatus){
         log.info("Requesting to find all cars...");
@@ -59,7 +59,7 @@ public class CarService {
             try {
                 yearModelInt = Integer.parseInt(yearModel);
             } catch (NumberFormatException e) {
-                log.error("This is not a year. ERROR: " + e);
+                log.error("This is not a correct year. ERROR: " + e);
             }
             int finalYearModelInt = yearModelInt;
             cars = cars.stream()
@@ -67,17 +67,31 @@ public class CarService {
                     .collect(Collectors.toList());
         }
 
-        if (weight != 0){
+        if (weight != null){
             log.info("Search by weight " + weight);
+            int weightInt = 0;
+            try {
+                weightInt = Integer.parseInt(weight);
+            } catch (NumberFormatException e) {
+                log.error("This is not a correct weight. ERROR: " + e);
+            }
+            int finalWeightInt = weightInt;
             cars = cars.stream()
-                    .filter(car -> car.getWeight() == weight)
+                    .filter(car -> car.getWeight() == finalWeightInt)
                     .collect(Collectors.toList());
         }
 
-        if (seats != 0) {
+        if (seats != null) {
             log.info("Search by number of seats: " + seats);
+            int seatsInt = 0;
+            try {
+                seatsInt = Integer.parseInt(seats);
+            } catch (NumberFormatException e) {
+                log.error("This is not a correct number of seats. ERROR: " + e);
+            }
+            int finalSeatsInt = seatsInt;
             cars = cars.stream()
-                    .filter(car -> car.getSeats() == seats)
+                    .filter(car -> car.getSeats() == finalSeatsInt)
                     .collect(Collectors.toList());
         }
 

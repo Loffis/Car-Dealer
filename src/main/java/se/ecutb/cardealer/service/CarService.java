@@ -25,8 +25,29 @@ public class CarService {
     private final CarRepository carRepository;
 
     @Cacheable(value = "carCache")
-    public List<Car> findAllForGuests (String brand, String model, String yearModel, String seats, String equipment){
+    public List<Car> findAllForGuests (String brand, String model){
 
+        var cars = carRepository.findAll();
+
+
+        if (brand != null) {
+            cars.stream().filter(car -> car.getBrand().toLowerCase().contains(brand.toLowerCase()))
+                    .map(car -> car.builder()
+                    .brand(car.getBrand())
+                    .model(car.getModel())
+                    .build())
+                    .collect(Collectors.toList());
+        }
+
+        if (model != null) {
+            cars.stream().filter(car -> car.getModel().toLowerCase().contains(model.toLowerCase()))
+                    .map(car -> car.builder()
+                            .brand(car.getBrand())
+                            .model(car.getModel())
+                            .build())
+                    .collect(Collectors.toList());
+        }
+        return cars;
     }
 
 

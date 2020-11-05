@@ -68,6 +68,7 @@ public class WheelsController {
 
     //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @PostMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Wheels> saveWheels(@Validated @RequestBody Wheels wheels){
         return ResponseEntity.ok(wheelsService.save(wheels));
     }
@@ -81,6 +82,7 @@ public class WheelsController {
 
     //@Secured({"ROLE_ADMIN"})
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteWheels(@PathVariable String id){
         wheelsService.delete(id);
     }

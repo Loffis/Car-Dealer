@@ -31,6 +31,7 @@ public class UserController {
 
     @Secured("ROLE_ADMIN")
     @PostMapping
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<User> saveUser(@Validated @RequestBody User user) {
         return ResponseEntity.ok(userService.save(user));
     }

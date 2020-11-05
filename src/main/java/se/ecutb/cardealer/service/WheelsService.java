@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class WheelsService {
     private final WheelsRepository wheelsRepository;
 
-    @Cacheable(value = "wheelCache")
+    @Cacheable(value = "carCache")
     public List<Wheels> findAll(){
         log.info("Requesting to find all wheels...");
         log.info("Fresh data");
@@ -28,14 +28,14 @@ public class WheelsService {
         return wheels;
     }
 
-    @Cacheable(value = "wheelCache", key = "#id")
+    @Cacheable(value = "carCache", key = "#id")
     public Wheels findById(String id) {
         return wheelsRepository.findById(id).
                 orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         String.format("can't find the wheel %s by id", id)));
     }
 
-    @Cacheable(value = "wheelCache")
+    @Cacheable(value = "carCache")
     public List<Wheels> findByRimMaterial(String material) {
         var wheelsList = wheelsRepository.findAll();
         wheelsList = wheelsList.stream()
@@ -44,7 +44,7 @@ public class WheelsService {
         return wheelsList;
     }
 
-    @Cacheable(value = "wheelCache")
+    @Cacheable(value = "carCache")
     public List<Wheels> findByRimColor(String color) {
         var wheelsList = wheelsRepository.findAll();
         wheelsList = wheelsList.stream()
@@ -53,7 +53,7 @@ public class WheelsService {
         return wheelsList;
     }
 
-   @Cacheable(value = "wheelCache")
+   @Cacheable(value = "carCache")
     public List<Wheels> findByRimSize(int size){
         var wheelsList = wheelsRepository.findAll();
         wheelsList = wheelsList.stream()
@@ -64,7 +64,7 @@ public class WheelsService {
    }
 
 
-   @Cacheable(value = "wheelCache")
+   @Cacheable(value = "carCache")
     public List<Wheels> findByTireWidth(int width){
         var wheelsList = wheelsRepository.findAll();
         wheelsList = wheelsList.stream()
@@ -74,7 +74,7 @@ public class WheelsService {
         return wheelsList;
    }
 
-   @Cacheable(value = "wheelCache")
+   @Cacheable(value = "carCache")
     public List<Wheels> findByTireProfile(int profile) {
         var wheelsList = wheelsRepository.findAll();
         wheelsList = wheelsList.stream()
@@ -83,19 +83,19 @@ public class WheelsService {
                 .collect(Collectors.toList());
         return wheelsList;
    }
-   @Cacheable(value = "wheelCache")
+   @Cacheable(value = "carCache")
     public Wheels findByTireSpeedRating(char rating) {
         return wheelsRepository.findByTireSpeedRating(rating)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         String.format("can't find wheel %s by rating", rating)));
    }
 
-   @CachePut(value = "wheelCache", key = "#result.id")
+   @CachePut(value = "carCache", key = "#result.id")
     public Wheels save(Wheels wheels) {
         return wheelsRepository.save(wheels);
    }
 
-   @CachePut(value = "wheelCache", key = "#id")
+   @CachePut(value = "carCache", key = "#id")
     public void update(String id, Wheels wheels) {
         if (!wheelsRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
@@ -105,7 +105,7 @@ public class WheelsService {
         wheelsRepository.save(wheels);
     }
 
-   @CacheEvict(value = "wheelCache", key = "#id")
+   @CacheEvict(value = "carCache", key = "#id")
    public void delete(String id) {
         if(!wheelsRepository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,

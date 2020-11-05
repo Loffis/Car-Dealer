@@ -1,7 +1,7 @@
-= CarDealer
+= CarDealer by Jonatan & Loffe
 :doctype: book
 :icons: font
-:source-highlighter: highlightjs
+:source-highlighter: prettify
 
 `UserController`
 

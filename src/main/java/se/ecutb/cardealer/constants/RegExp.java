@@ -7,7 +7,7 @@ public class RegExp {
     // 30-80 %. Steps of 5.
     public static final String TIRE_PROFILE_PATTERN = "^([3-8][05])$";
     // B-Y
-    public static final String TIRE_SPEED_RATING_PATTERN = "^([B-Y])$";
+    public static final String TIRE_SPEED_RATING_PATTERN = "[B-Y]";
     // 3-20 characters, only a-z and 0-9. First character must be a-z.
     public static final String USERNAME_REGEXP_PATTERN = "^([a-z]+[a-z0-9]{2,19})$";
     // 2-4 numbers, - is optional, 5-8 numbers

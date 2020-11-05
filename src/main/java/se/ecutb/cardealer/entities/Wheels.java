@@ -25,27 +25,35 @@ public class Wheels implements Serializable {
     @Size(min = 3, max = 64, message = WRONG_SIZE_MSG)
     private String rimColor;
     @NotNull(message = EMPTY_FIELD_MSG)
-    @Min(value = 13, message = WRONG_SIZE_MSG)
-    @Max(value = 24, message = WRONG_SIZE_MSG)
+    @Min(value = 13, message = WRONG_MIN_VALUE_MSG)
+    @Max(value = 24, message = WRONG_MAX_VALUE_MSG)
     private int rimSizeFront;
     @NotNull(message = EMPTY_FIELD_MSG)
-    @Min(value = 13, message = WRONG_SIZE_MSG)
-    @Max(value = 24, message = WRONG_SIZE_MSG)
+    @Min(value = 13, message = WRONG_MIN_VALUE_MSG)
+    @Max(value = 24, message = WRONG_MAX_VALUE_MSG)
     private int rimSizeRear;
     @NotNull(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = TIRE_WIDTH_PATTERN, message = WRONG_TIRE_WIDTH_MSG)
+    //@Pattern(regexp = TIRE_WIDTH_PATTERN, message = WRONG_TIRE_WIDTH_MSG)
+    @Min(value = 135, message = WRONG_MIN_VALUE_MSG)
+    @Max(value = 355, message = WRONG_MAX_VALUE_MSG)
     private int tireWidthFront;
     @NotNull(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = TIRE_WIDTH_PATTERN, message = WRONG_TIRE_WIDTH_MSG)
+    //@Pattern(regexp = TIRE_WIDTH_PATTERN, message = WRONG_TIRE_WIDTH_MSG)
+    @Min(value = 135, message = WRONG_MIN_VALUE_MSG)
+    @Max(value = 355, message = WRONG_MAX_VALUE_MSG)
     private int tireWidthRear;
     @NotNull(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = TIRE_PROFILE_PATTERN, message = WRONG_TIRE_PROFILE_MSG)
+    //@Pattern(regexp = TIRE_PROFILE_PATTERN, message = WRONG_TIRE_PROFILE_MSG)
+    @Min(value = 30, message = WRONG_MIN_VALUE_MSG)
+    @Max(value = 80, message = WRONG_MAX_VALUE_MSG)
     private int tireProfileFront;
     @NotNull(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = TIRE_PROFILE_PATTERN, message = WRONG_TIRE_PROFILE_MSG)
+    //@Pattern(regexp = TIRE_PROFILE_PATTERN, message = WRONG_TIRE_PROFILE_MSG)
+    @Min(value = 30, message = WRONG_MIN_VALUE_MSG)
+    @Max(value = 80, message = WRONG_MAX_VALUE_MSG)
     private int tireProfileRear;
     @NotNull(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = TIRE_SPEED_RATING_PATTERN, message = WRONG_TIRE_SPEED_RATING_MSG)
+    //@Pattern(regexp = TIRE_SPEED_RATING_PATTERN, message = WRONG_TIRE_SPEED_RATING_MSG)
     private char tireSpeedRating;
 
 }

@@ -50,7 +50,7 @@ public class UserService {
                         String.format("Could not find the user by username %s", username)));
     }
 
-    @CachePut(value = "carCache", key = "#result.id")
+    @CachePut(value = "carCache")
     public User save(User user){
         return userRepository.save(user);
     }
@@ -83,7 +83,4 @@ public class UserService {
         }
         userRepository.deleteById(id);
     }
-
-
-
 }

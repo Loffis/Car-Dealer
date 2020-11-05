@@ -90,7 +90,7 @@ public class WheelsService {
                         String.format("can't find wheel %s by rating", rating)));
    }
 
-   @CachePut(value = "carCache", key = "#result.id")
+   @CachePut(value = "carCache")
     public Wheels save(Wheels wheels) {
         return wheelsRepository.save(wheels);
    }

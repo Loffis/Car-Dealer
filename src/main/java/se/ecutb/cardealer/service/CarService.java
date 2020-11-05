@@ -213,7 +213,7 @@ public class CarService {
     }*/
 
 
-    @CachePut(value = "carCache", key = "#result.id")
+    @CachePut(value = "carCache")
     public Car save(Car car){
         return carRepository.save(car);
     }

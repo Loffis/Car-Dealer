@@ -25,7 +25,7 @@ public class CarController {
 
     }
 
-    @Secured({"ROLE_DEALER", "ROLE_ADMIN"})
+    //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @GetMapping()
     public ResponseEntity<List<Car>> findAllCars(@RequestParam(required = false) String regNumber,
                                                  @RequestParam(required = false) String brand,
@@ -45,7 +45,7 @@ public class CarController {
                 sortByModel, sortByWeight, sortBySeats, sortByYear, sortByStatus));
     }
 
-    @Secured({"ROLE_DEALER", "ROLE_ADMIN"})
+    //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @GetMapping("/{id}")
     public ResponseEntity<Car> findCarById(@PathVariable String id){
         return ResponseEntity.ok(carService.findbyId(id));
@@ -75,20 +75,20 @@ public class CarController {
         return ResponseEntity.ok(carService.findBySeats(seats));
     }*/
 
-    @Secured({"ROLE_DEALER", "ROLE_ADMIN"})
+    //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @PostMapping
     public ResponseEntity<Car> saveCar(@Validated @RequestBody Car car){
         return ResponseEntity.ok(carService.save(car));
     }
 
-    @Secured({"ROLE_DEALER", "ROLE_ADMIN"})
+    //@Secured({"ROLE_DEALER", "ROLE_ADMIN"})
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateCar(@PathVariable String id, @Validated @RequestBody Car car){
         carService.update(id, car);
     }
 
-    @Secured({"ROLE_ADMIN"})
+    //@Secured({"ROLE_ADMIN"})
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCar(@PathVariable String id){
